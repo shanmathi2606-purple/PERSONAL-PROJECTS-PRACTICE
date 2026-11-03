@@ -23,6 +23,7 @@ jobs:
         run: |
           node --check backend/app.js
           node -e "require('express'); console.log('OK')"
-      -name: Break the pipeline intentionally
-       run: exit 1
+      - name: Break the pipeline intentionally
+        run: exit 1
+
        
