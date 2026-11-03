@@ -1,5 +1,7 @@
 name: CI
 
+permissions:
+  contents: write
 on:
   push:
     branches: [main]
@@ -25,3 +27,8 @@ jobs:
         run: |
           node --check backend/app.js
           node -e "require('express'); console.log('OK')"
+      - name: Deploy Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish-dir: ./frontend
